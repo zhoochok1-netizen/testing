@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import styles from './ReviewsSection.module.css';
+import styles from '../ReviewsSection/ReviewsSection.module.css';
 
 interface Review {
   id: number;

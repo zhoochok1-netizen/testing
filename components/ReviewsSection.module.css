@@ -1,0 +1,386 @@
+.reviewsSection {
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 2rem 0rem 0rem 0rem;
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #111827;
+  font-weight: 400;
+}
+
+.sliderContainer {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.cardsWrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.cardsWrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.cardsWrapper::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.cardsWrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.cardsWrapper::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.reviewCard {
+  background-color: #f5f6fa;
+  border-radius: 0.875rem;
+  padding: 1rem;
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
+  flex-shrink: 0;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: auto;
+  min-height: auto;
+}
+
+.reviewCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reviewerInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.reviewerPhoto {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  flex-shrink: 0;
+}
+
+.reviewerPhotoPlaceholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border: 2px solid white;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.reviewerPhotoPlaceholder::before {
+  content: '👤';
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.reviewerName {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.reviewDateContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.reviewDate {
+  font-size: 0.6875rem;
+  color: #6b7280;
+}
+
+.calendarIcon {
+  width: 12px;
+  height: 12px;
+}
+
+.reviewTextContainer {
+  background-color: #ffffff;
+  border-radius: 0.625rem;
+  padding: 0.75rem;
+  flex: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.reviewText {
+  font-size: 0.875rem;
+  color: #111827;
+  line-height: 1.5;
+  text-align: left;
+  margin: 0;
+}
+
+.loadingContainer {
+  text-align: center;
+}
+
+.loadingSpinner {
+  border: 2px solid #f3f4f6;
+  border-top: 2px solid #111827;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+.loadingText {
+  margin-top: 1rem;
+  color: #4b5563;
+}
+
+/* Responsive design */
+@media (min-width: 375px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+
+  .reviewCard {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+/* Responsive cards */
+@media (max-width: 767px) {
+  .reviewsSection {
+    min-height: calc(100vh - 80px);
+    height: auto;
+    padding: 1.5rem 0;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .reviewCard {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    padding: 0.875rem;
+  }
+
+  .reviewerName {
+    font-size: 0.75rem;
+  }
+
+  .reviewerPhoto {
+    width: 36px;
+    height: 36px;
+  }
+
+  .reviewerPhotoPlaceholder {
+    width: 36px;
+    height: 36px;
+    font-size: 0.75rem;
+  }
+
+  .reviewDate {
+    font-size: 0.625rem;
+  }
+
+  .reviewTextContainer {
+    padding: 0.75rem;
+  }
+
+  .reviewText {
+    font-size: 0.75rem;
+  }
+
+  .cardsWrapper {
+    gap: 0.625rem;
+    padding: 0.75rem 0;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .reviewsSection {
+    padding: 1.25rem 0;
+  }
+
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .reviewCard {
+    width: 260px;
+    min-width: 260px;
+    max-width: 260px;
+    padding: 0.75rem;
+  }
+
+  .cardsWrapper {
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+}
+
+/* Very small screens (375px and below) */
+@media (max-width: 375px) {
+  .reviewsSection {
+    padding: 1rem 0;
+  }
+
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .header {
+    margin-bottom: 1.25rem;
+  }
+
+  .title {
+    font-size: 1.375rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+  }
+
+  .reviewCard {
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
+    padding: 0.75rem;
+  }
+
+  .reviewText {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .cardsWrapper {
+    gap: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .reviewCard {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    padding: 0.875rem;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

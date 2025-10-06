@@ -1,7 +1,7 @@
-import Header from '@/components/Header/Header';
-import HeroSection from '@/components/HeroSection/HeroSection';
-import ReviewsSection from '@/components/ReviewsSection/ReviewsSection';
-import Footer from '@/components/Footer/Footer';
+import Header from '@/components/Header';
+import HeroSection from '@/components/HeroSection';
+import ReviewsSection from '@/components/ReviewsSection';
+import Footer from '@/components/Footer';
 import styles from './page.module.css';
 
 // Fetch data on server

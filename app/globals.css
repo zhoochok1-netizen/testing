@@ -450,7 +450,7 @@ label {
   display: block;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 768px) {
   .desktop-only {
     display: none;
   }

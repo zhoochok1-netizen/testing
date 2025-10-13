@@ -79,36 +79,119 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .overlay {
     padding: 1rem;
+    align-items: flex-start;
+    padding-top: 5rem;
   }
 
   .menuContainer {
     padding: 1.5rem;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
+    max-width: calc(100% - 2rem);
+  }
+
+  .menuTitle {
+    font-size: 1.1rem;
+  }
+
+  .pageIndicator {
+    font-size: 1rem;
   }
 
   .menuItem {
+    font-size: 1.3rem;
+    padding: 0.875rem 0;
+  }
+
+  .menuHeader {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1rem;
+  }
+
+  .menu {
+    gap: 1.5rem;
+  }
+
+  .backArrow {
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 0.75rem;
+    padding-top: 4.5rem;
+  }
+
+  .menuContainer {
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+  }
+
+  .menuTitle {
+    font-size: 1rem;
+  }
+
+  .pageIndicator {
+    font-size: 0.95rem;
+  }
+
+  .menuItem {
+    font-size: 1.2rem;
+    padding: 0.75rem 0;
   }
 
   .menuHeader {
     margin-bottom: 1.5rem;
-  }
-}
-
-@media (max-width: 375px) {
-  .menuContainer {
-    padding: 1.25rem;
-  }
-
-  .menuItem {
-    font-size: 1.31rem;
-    padding: 0.625rem 0;
+    padding-bottom: 0.875rem;
   }
 
   .menu {
     gap: 1.25rem;
+  }
+
+  .backArrow {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .overlay {
+    padding: 0.5rem;
+    padding-top: 4rem;
+  }
+
+  .menuContainer {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .menuTitle {
+    font-size: 0.95rem;
+  }
+
+  .pageIndicator {
+    font-size: 0.875rem;
+  }
+
+  .menuItem {
+    font-size: 1.1rem;
+    padding: 0.625rem 0;
+  }
+
+  .menuHeader {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .menu {
+    gap: 1rem;
+  }
+
+  .backArrow {
+    font-size: 1.3rem;
+    margin-right: 0.375rem;
   }
 }

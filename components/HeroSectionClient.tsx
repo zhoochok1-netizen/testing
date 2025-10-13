@@ -22,7 +22,7 @@ export default function HeroSectionClient({
   // Check if device is mobile
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 375);
+      setIsMobile(window.innerWidth <= 768);
     };
 
     checkMobile();
@@ -127,7 +127,11 @@ export default function HeroSectionClient({
             </div>
           </div>
 
-          <div className={styles.centerColumn}>
+          <div
+            className={`${styles.centerColumn} ${
+              isMobile && mobileStep === 0 ? styles.mobileVideoPreview : ''
+            }`}
+          >
             <div className={styles.videoWrapper}>
               <video
                 className={styles.backgroundVideo}
@@ -186,29 +190,19 @@ export default function HeroSectionClient({
               Ваш браузер не поддерживает видео элемент.
             </video>
           </div>
-          <div className={styles.mobileVideoButtonContainer}>
-            {mainData.sidebar.watch_video.enabled && (
+          {mainData.sidebar.watch_video.enabled && (
+            <div className={styles.mobileVideoButtonContainer}>
               <VideoCardButton
                 label={mainData.sidebar.watch_video.label}
                 videoUrl={mainData.sidebar.watch_video.url}
               />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       )}
       {isMobile && mobileStep === 2 && (
         <div className={styles.mobileReviewsOnly}>
-          <div className={styles.mobileReviewsHeader}>
-            <h2 className={styles.mobileReviewsTitle}>
-              Отзывы от врачей и пациентов
-            </h2>
-            <p className={styles.mobileReviewsSubtitle}>
-              на приложение revmo.info app
-            </p>
-          </div>
-          <div className={styles.mobileReviewsContent}>
-            <ReviewsSection data={reviewsData} />
-          </div>
+          <ReviewsSection data={reviewsData} />
         </div>
       )}
     </div>

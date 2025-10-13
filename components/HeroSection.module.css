@@ -781,373 +781,397 @@
   }
 }
 
-@media (max-width: 768px) {
+/* Mobile devices (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
   .heroSection {
-    padding: 1.5rem 0.75rem;
-    min-height: calc(100vh - 80px);
-    height: auto;
-  }
-
-  .content {
-    padding: 0 0.5rem;
-    gap: 1.5rem;
-  }
-
-  .leftColumn {
-    padding: 1.5rem;
-  }
-
-  .title {
-    font-size: 2.63rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .subtitle {
-    font-size: 1.31rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .downloadButton {
-    font-size: 1.13rem;
-    padding: 0.75rem 1rem;
-    width: 100%;
-  }
-
-  .buttonsContainer {
-    width: 100%;
-    gap: 0.5rem;
-  }
-
-  .videoWrapper {
-    max-width: 300px;
-    width: 100%;
-    height: auto;
-  }
-
-  .centerColumn {
-    padding: 1.5rem;
-  }
-
-  .sidebarCard {
-    padding: 1rem;
-    min-height: 80px;
-  }
-
-  .sidebarCard:last-child {
-    flex: 1;
-    min-height: 80px;
-  }
-
-  .cardText {
-    font-size: 1.13rem;
-  }
-
-  .cardIcon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 0.5rem;
-  }
-
-  .videoIcon,
-  .scanIcon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .sidebarCard:first-child:hover .videoIcon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .qrCode {
-    width: 80px;
-    height: 80px;
-  }
-}
-
-/* Extra small screens */
-@media (max-width: 480px) {
-  .heroSection {
-    padding: 1rem 0.5rem;
-  }
-
-  .content {
     padding: 0;
-    gap: 1rem;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .content {
+    gap: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    padding: 1rem 1.5rem;
+    padding-top: 2rem;
   }
 
   .leftColumn {
     padding: 1.25rem;
+    /* padding-bottom: 220px; */
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  }
+
+  .leftColumn.fadeOut {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+  }
+
+  .leftColumnContent {
+    text-align: center;
+    align-items: center;
   }
 
   .title {
-    font-size: 2.25rem;
+    font-size: 2rem;
+    line-height: 1.2;
     margin-bottom: 0.5rem;
+    text-align: center;
   }
 
   .subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 1.3;
   }
 
   .buttonsContainer {
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   .downloadButton {
-    padding: 0.625rem 0.875rem;
-    font-size: 1.05rem;
-  }
-
-  .buttonIcon {
-    width: 16px;
-    height: 16px;
-  }
-
-  .videoWrapper {
-    max-width: 220px;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
     width: 100%;
-    height: auto;
+    border-radius: 1.5rem;
   }
 
-  .centerColumn {
-    padding: 1rem;
-  }
-
-  .rightColumn {
-    gap: 0.75rem;
-  }
-
-  .sidebarCard {
-    padding: 0.875rem;
-  }
-
-  .sidebarCard:first-child {
-    flex: 0 0 25%;
-  }
-
-  .sidebarCard:last-child {
-    flex: 0 0 75%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .cardText {
-    font-size: 1.05rem;
-  }
-
-  .cardIcon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .sidebarCard:first-child:hover .videoIcon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .qrCode {
-    width: 50px;
-    height: 50px;
+  .buttonIcon,
+  .buttonIconHover {
+    width: 22px;
+    height: 22px;
   }
 
   .apkLink {
-    font-size: 1.13rem;
+    position: static;
+    margin-bottom: 0.75rem;
+    align-self: center;
+    font-size: 0.9rem;
   }
 
   .apkIcon {
     width: 16px;
     height: 16px;
   }
+
+  .rightColumn {
+    display: none;
+  }
 }
 
-/* Mobile Layout (375x667) */
-@media (max-width: 375px) {
+/* Extra small screens (376px - 480px) */
+@media (max-width: 480px) and (min-width: 376px) {
   .heroSection {
-    padding: 0.75rem 0.5rem;
+    padding: 0;
     height: 100vh;
     overflow: hidden;
   }
 
   .content {
-    gap: 0.875rem;
+    gap: 0;
     height: 100%;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    padding: 0.75rem 1rem;
+    padding-top: 1.5rem;
   }
 
   .leftColumn {
-    padding: 1rem;
+    padding: 1.25rem;
+    /* padding-bottom: 220px; */
     flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
     transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-    will-change: opacity, transform;
   }
 
   .leftColumn.fadeOut {
     opacity: 0;
     transform: translateY(-20px);
+    pointer-events: none;
+  }
+
+  .leftColumnContent {
+    text-align: center;
+    align-items: center;
   }
 
   .title {
-    font-size: 2.06rem;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    text-align: center;
   }
 
   .subtitle {
-    font-size: 1.13rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .buttonsContainer {
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 100%;
   }
 
   .downloadButton {
-    padding: 0.625rem 0.75rem;
-    font-size: 0.98rem;
-  }
-
-  .centerColumn {
-    padding: 0.875rem;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease-in-out;
-    will-change: transform;
-  }
-
-  .videoWrapper {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.95rem;
     width: 100%;
-    height: 200px;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-    will-change: transform;
+    border-radius: 1.5rem;
   }
 
-  .backgroundVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0.5rem;
-    transition: all 0.4s ease-in-out;
-    border: none;
-    outline: none;
+  .buttonIcon,
+  .buttonIconHover {
+    width: 20px;
+    height: 20px;
+  }
+
+  .apkLink {
+    position: static;
+    margin-bottom: 0.75rem;
+    align-self: center;
+    font-size: 0.875rem;
+  }
+
+  .apkIcon {
+    width: 15px;
+    height: 15px;
   }
 
   .rightColumn {
-    flex-shrink: 0;
+    display: none;
+  }
+}
+
+/* Mobile Layout (375x667) */
+@media (max-width: 375px) {
+  .heroSection {
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
   }
 
-  .sidebarCard {
-    padding: 0.875rem;
-  }
-
-  .sidebarCard:first-child {
-    flex: 0 0 25%;
-  }
-
-  .sidebarCard:last-child {
-    flex: 0 0 75%;
+  .content {
+    gap: 0;
+    height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    gap: 0.5rem;
+    position: relative;
+    padding: 0.5rem 1rem;
+    padding-top: 1rem;
   }
 
-  .cardText {
-    font-size: 1.05rem;
+  .leftColumn {
+    padding: 1rem;
+    padding-bottom: 220px;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    will-change: opacity, transform;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: auto;
   }
 
-  .qrCode {
-    width: 50px;
-    height: 50px;
+  .leftColumn.fadeOut {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+  }
+
+  .leftColumnContent {
+    text-align: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .buttonsContainer {
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 100%;
+  }
+
+  .downloadButton {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.9rem;
+    width: 100%;
+    border-radius: 1.5rem;
+  }
+
+  .buttonIcon,
+  .buttonIconHover {
+    width: 20px;
+    height: 20px;
+  }
+
+  .apkLink {
+    position: static;
+    margin-bottom: 0.625rem;
+    align-self: center;
+    font-size: 0.85rem;
+  }
+
+  .apkIcon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .rightColumn {
+    display: none;
   }
 }
 
-/* Mobile video with button */
-.mobileVideoWithButton {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
-  z-index: 10;
-  opacity: 0;
-  transform: scale(0.8);
-  animation: fadeInScale 0.5s ease-out forwards;
-  padding: 0;
-  margin: 0;
+/* Mobile video preview on step 0 - Global styles for all mobile devices */
+@media (max-width: 768px) {
+  .centerColumn.mobileVideoPreview {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1 !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .mobileVideoPreview .videoWrapper {
+    /* height: 200px !important; */
+    width: 100% !important;
+  }
+
+  .mobileVideoPreview .backgroundVideo {
+    background-color: white;
+    height: 200px !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
+    object-fit: contain !important;
+  }
+
+  /* Add padding to leftColumn when video is at bottom */
+  .leftColumn {
+    padding-bottom: 120px !important;
+  }
 }
 
-.mobileVideoContainer {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  min-height: 0;
-}
+/* Mobile video with button (Step 1) */
+@media (max-width: 768px) {
+  .mobileVideoWithButton {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: #f5f6fa !important;
+    display: flex !important;
+    flex-direction: column !important;
+    z-index: 10 !important;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeInScale 0.5s ease-out forwards;
+    padding: 0 !important;
+  }
 
-.mobileFullscreenVideo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 0.4s ease-in-out;
-  border: none;
-  outline: none;
-  border-radius: 0.5rem;
-}
+  .mobileVideoContainer {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 0 !important;
+    padding: 0.25rem !important;
+    overflow: hidden !important;
+  }
 
-.mobileVideoButtonContainer {
-  flex-shrink: 0;
-  padding: 0.5rem 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffffff;
+  .mobileFullscreenVideo {
+    /* width: 100% !important; */
+    height: 100% !important;
+    object-fit: contain !important;
+    border-radius: 0.25rem !important;
+    border: none !important;
+    outline: none !important;
+  }
+
+  .mobileVideoButtonContainer {
+    flex-shrink: 0 !important;
+    padding: 0.5rem 0.75rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 60px !important;
+  }
 }
 
 /* Mobile video button styles */
 .mobileVideoButtonContainer .sidebarCard {
   width: 100%;
-  max-width: 280px;
-  min-height: 50px;
-  padding: 0.5rem 0.75rem;
+  max-width: 100%;
+  min-height: 55px;
+  padding: 0.625rem 0.875rem;
   flex-direction: row;
-  gap: 0.5rem;
-  border-radius: 0.75rem;
+  gap: 0.625rem;
+  border-radius: 0.875rem;
 }
 
 .mobileVideoButtonContainer .cardIcon {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   margin-bottom: 0;
   flex-shrink: 0;
 }
 
 .mobileVideoButtonContainer .sidebarCard:first-child:hover .videoIcon {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
 }
 
 .mobileVideoButtonContainer .cardText {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 0;
   text-align: left;
   flex: 1;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
-@keyframes fadeInScale {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Mobile reviews only */
+/* Mobile reviews only (Step 2) */
 .mobileReviewsOnly {
   position: absolute;
   top: 0;
@@ -1160,9 +1184,16 @@
   animation: fadeInUp 0.5s ease-out forwards;
   display: flex;
   flex-direction: column;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
   overflow-y: auto;
   z-index: 10;
+}
+
+@keyframes fadeInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .mobileReviewsHeader {
@@ -1173,21 +1204,24 @@
 }
 
 .mobileReviewsTitle {
-  font-size: 1.88rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #111827;
   margin-bottom: 0.25rem;
+  line-height: 1.3;
 }
 
 .mobileReviewsSubtitle {
-  font-size: 1.2rem;
-  color: #111827;
+  font-size: 1rem;
+  color: #6b7280;
   font-weight: 400;
+  line-height: 1.4;
 }
 
 .mobileReviewsContent {
   flex: 1;
   overflow-y: auto;
+  padding-bottom: 1rem;
 }
 
 @keyframes fadeInUp {

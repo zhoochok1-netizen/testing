@@ -3,14 +3,13 @@
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Next.js with SSR support
+# Netlify automatically detects Next.js and uses the correct runtime
 
 [dev]
   command = "npm run dev"
   port = 3000
-  publish = ".next"
+  targetPort = 3000
+  autoLaunch = false

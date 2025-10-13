@@ -6,15 +6,14 @@
   background-color: #ffffff;
   padding: 2rem 0rem 0rem 0rem;
   width: 100%;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif !important;
   overflow: hidden;
 }
 
 .container {
-  max-width: 1920px;
-  margin: 0 auto;
-  padding: 0 2rem;
   width: 100%;
+  margin: 0;
+  padding: 0 0.5rem;
 }
 
 .header {
@@ -23,22 +22,23 @@
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 0.5rem;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px;
 }
 
 .subtitle {
-  font-size: 1rem;
-  color: #111827;
-  font-weight: 400;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 42px;
 }
 
 .sliderContainer {
   position: relative;
-  max-width: 100%;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
 }
 
 .cardsWrapper {
@@ -51,6 +51,8 @@
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #cbd5e1 transparent;
+  width: 100%;
+  max-width: 100%;
 }
 
 .cardsWrapper::-webkit-scrollbar {
@@ -119,7 +121,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  /* background устанавливается динамически через inline style */
   border: 2px solid white;
   flex-shrink: 0;
   display: flex;
@@ -127,18 +129,16 @@
   justify-content: center;
   color: white;
   font-weight: 700;
-  font-size: 0.875rem;
-  position: relative;
-  overflow: hidden;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.reviewerPhotoPlaceholder::before {
-  content: '👤';
-  font-size: 1.2rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.reviewCard:hover .reviewerPhotoPlaceholder {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .reviewerName {
@@ -155,8 +155,11 @@
 }
 
 .reviewDate {
-  font-size: 0.6875rem;
-  color: #6b7280;
+  font-family: Lato;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: 18px;
 }
 
 .calendarIcon {
@@ -173,11 +176,11 @@
 }
 
 .reviewText {
-  font-size: 0.875rem;
-  color: #111827;
-  line-height: 1.5;
-  text-align: left;
-  margin: 0;
+  font-family: Lato;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 .loadingContainer {
@@ -197,6 +200,107 @@
 .loadingText {
   margin-top: 1rem;
   color: #4b5563;
+}
+
+/* Medium screens (1090x620 and similar) */
+@media (max-width: 1200px) and (min-width: 1000px) {
+  .reviewsSection {
+    padding: 2rem 0;
+    height: auto;
+    min-height: auto;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .sliderContainer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cardsWrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Tablet/Mobile Layout (744x1133) */
+@media (max-width: 1280px) and (min-width: 744px) {
+  .reviewsSection {
+    padding: 2rem 0;
+    height: auto;
+    min-height: auto;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.31rem;
+  }
+
+  .cardsWrapper {
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .reviewCard {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    padding: 1rem;
+  }
+}
+
+/* Hide header in mobile reviews (375px and below) */
+@media (max-width: 375px) {
+  .header {
+    display: none;
+  }
+
+  .reviewsSection {
+    padding: 0;
+    height: auto;
+    min-height: auto;
+    background: transparent;
+  }
+
+  .container {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .sliderContainer {
+    max-width: 100%;
+  }
+
+  .cardsWrapper {
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .reviewCard {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    padding: 1rem;
+    flex-shrink: 0;
+  }
 }
 
 /* Responsive design */
@@ -231,7 +335,7 @@
 /* Responsive cards */
 @media (max-width: 767px) {
   .reviewsSection {
-    min-height: calc(100vh - 80px);
+    /* min-height: calc(100vh - 80px); */
     height: auto;
     padding: 1.5rem 0;
   }
@@ -252,7 +356,11 @@
   }
 
   .reviewerName {
-    font-size: 0.75rem;
+    font-family: Lato;
+    font-size: 20.5px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
   }
 
   .reviewerPhoto {
@@ -263,11 +371,15 @@
   .reviewerPhotoPlaceholder {
     width: 36px;
     height: 36px;
-    font-size: 0.75rem;
+    font-size: 1.13rem;
   }
 
   .reviewDate {
-    font-size: 0.625rem;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 18px;
   }
 
   .reviewTextContainer {
@@ -275,7 +387,7 @@
   }
 
   .reviewText {
-    font-size: 0.75rem;
+    font-size: 1.13rem;
   }
 
   .cardsWrapper {
@@ -284,11 +396,11 @@
   }
 
   .title {
-    font-size: 1.75rem;
+    font-size: 2.63rem;
   }
 
   .subtitle {
-    font-size: 0.875rem;
+    font-size: 1.31rem;
   }
 }
 
@@ -307,11 +419,11 @@
   }
 
   .title {
-    font-size: 1.5rem;
+    font-size: 2.25rem;
   }
 
   .subtitle {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
   }
 
   .reviewCard {
@@ -342,12 +454,12 @@
   }
 
   .title {
-    font-size: 1.375rem;
+    font-size: 2.06rem;
     margin-bottom: 0.375rem;
   }
 
   .subtitle {
-    font-size: 0.75rem;
+    font-size: 1.13rem;
   }
 
   .reviewCard {
@@ -358,7 +470,7 @@
   }
 
   .reviewText {
-    font-size: 0.7rem;
+    font-size: 1.05rem;
     line-height: 1.4;
   }
 

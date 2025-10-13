@@ -6,7 +6,7 @@
   background-color: #f5f6fa;
   padding: 4rem 2rem;
   width: 100%;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif !important;
 }
 
 .content {
@@ -23,14 +23,23 @@
 .leftColumn {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   background-color: #ffffff;
   border-radius: 36px;
+  gap: 1rem;
   padding: 2rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 2;
+}
+
+.leftColumnContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  justify-content: center;
 }
 
 .centerColumn {
@@ -59,23 +68,17 @@
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
-  text-align: left;
-  margin-top: 0;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px;
 }
 
 .subtitle {
-  font-size: 0.9rem;
-  color: #6b7280;
-  margin-bottom: 1.5rem;
-  line-height: 1.4;
-  text-align: left;
-  font-weight: 400;
-  margin-top: 0;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 42px;
 }
 
 .buttonsContainer {
@@ -84,6 +87,7 @@
   gap: 0.75rem;
   align-items: flex-start;
   width: 100%;
+  margin-top: auto;
 }
 
 .downloadButton {
@@ -91,26 +95,47 @@
   color: white;
   padding: 0.75rem 1rem;
   border-radius: 2rem;
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   justify-content: center;
   flex: 1;
   white-space: nowrap;
+  position: relative;
 }
 
 .downloadButton:hover {
-  background-color: #374151;
+  box-shadow: 0 8px 18px 0 rgba(217, 52, 151, 0.2);
+}
+
+.downloadButton:hover .buttonIcon {
+  opacity: 0;
+}
+
+.downloadButton:hover .buttonIconHover {
+  opacity: 1;
 }
 
 .buttonIcon {
   width: 18px;
   height: 18px;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.buttonIconHover {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 1rem;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
 }
 
 .videoWrapper {
@@ -125,7 +150,7 @@
 .backgroundVideo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   border-radius: 0.5rem;
 }
@@ -141,17 +166,31 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border: none;
   justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.sidebarCard:first-child:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .sidebarCard:first-child {
   border-radius: 36px;
-  min-height: 120px;
+  min-height: 160px;
+  flex: 0 0 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebarCard:last-child {
-  flex: 1;
+  flex: 0 0 75%;
   border-radius: 36px;
-  min-height: 200px;
+  max-height: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .cardIcon {
@@ -166,6 +205,21 @@
 
 .sidebarCard:first-child .cardIcon {
   background-color: #8b5cf6;
+  transition: all 0.3s ease;
+}
+
+.sidebarCard:first-child:hover .cardIcon {
+  background: var(
+    --Gradient-4,
+    linear-gradient(312deg, #bdfff4 -0.21%, #d93497 100.23%)
+  );
+}
+
+.sidebarCard:first-child:hover .videoIcon {
+  content: url('/icons/Favicon.svg');
+  filter: none;
+  width: 50px;
+  height: 50px;
 }
 
 .sidebarCard:last-child .cardIcon {
@@ -176,6 +230,7 @@
   width: 24px;
   height: 24px;
   filter: brightness(0) invert(1);
+  transition: all 0.3s ease;
 }
 
 .scanIcon {
@@ -185,12 +240,23 @@
 }
 
 .cardText {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #111827;
-  line-height: 1.3;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+/* QR card specific styles */
+.sidebarCard:last-child .cardText {
   text-align: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.sidebarCard:last-child .qrCode {
+  flex-shrink: 0;
+  margin-top: 0;
 }
 
 .qrCode {
@@ -327,7 +393,7 @@
 
 .qrCode {
   background-color: white;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   border-radius: 0.5rem;
   border: 1px solid #e5e7eb;
   width: 120px;
@@ -465,8 +531,187 @@
   }
 }
 
-/* Responsive design */
-@media (max-width: 1280px) {
+/* Medium screens (1200px) */
+@media (max-width: 1200px) and (min-width: 1000px) {
+  .content {
+    grid-template-columns: 1fr 0.15fr;
+    grid-template-rows: auto auto;
+    gap: 0.8rem;
+  }
+
+  .leftColumn {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .centerColumn {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+
+  .rightColumn {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebarCard:first-child {
+    border-radius: 36px;
+    min-height: 160px;
+    flex: 0 0 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebarCard:last-child {
+    flex: 0 0 75%;
+    border-radius: 36px;
+    max-height: 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .sidebarCard:last-child .cardText {
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .qrSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .qrCode {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Tablet/Mobile Layout (744x1133) */
+@media (max-width: 1280px) and (min-width: 744px) {
+  .heroSection {
+    padding: 2rem 1rem;
+    height: auto;
+    min-height: calc(100vh - 80px);
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .leftColumn {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  .buttonsContainer {
+    flex-direction: row;
+    gap: 0.75rem;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .downloadButton {
+    flex: 1;
+    font-size: 1.31rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .apkLink {
+    position: static;
+    align-self: flex-start;
+    margin-bottom: 1rem;
+    font-size: 1.31rem;
+  }
+
+  .centerColumn {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .videoWrapper {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .backgroundVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0.5rem;
+  }
+
+  .rightColumn {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .sidebarCard {
+    min-height: 120px;
+    padding: 1.5rem;
+  }
+
+  .sidebarCard:first-child {
+    flex: 0 0 25%;
+    min-height: 120px;
+  }
+
+  .sidebarCard:last-child {
+    flex: 0 0 75%;
+    min-height: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 743px) {
   .content {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -476,11 +721,17 @@
     align-items: center;
     text-align: center;
     justify-content: center;
+    flex-direction: column;
+  }
+
+  .leftColumnContent {
+    width: 100%;
+    text-align: center;
   }
 
   .title {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3.75rem;
   }
 
   .subtitle {
@@ -506,13 +757,21 @@
   }
 
   .sidebarCard {
-    flex: 1;
+    min-height: 100px;
+  }
+
+  .sidebarCard:first-child {
+    flex: 0 0 25%;
     min-height: 100px;
   }
 
   .sidebarCard:last-child {
-    flex: 1;
+    flex: 0 0 75%;
     min-height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
   }
 
   .videoWrapper {
@@ -539,17 +798,17 @@
   }
 
   .title {
-    font-size: 1.75rem;
+    font-size: 2.63rem;
     margin-bottom: 0.5rem;
   }
 
   .subtitle {
-    font-size: 0.875rem;
+    font-size: 1.31rem;
     margin-bottom: 1.5rem;
   }
 
   .downloadButton {
-    font-size: 0.75rem;
+    font-size: 1.13rem;
     padding: 0.75rem 1rem;
     width: 100%;
   }
@@ -580,7 +839,7 @@
   }
 
   .cardText {
-    font-size: 0.75rem;
+    font-size: 1.13rem;
   }
 
   .cardIcon {
@@ -595,9 +854,14 @@
     height: 20px;
   }
 
+  .sidebarCard:first-child:hover .videoIcon {
+    width: 40px;
+    height: 40px;
+  }
+
   .qrCode {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
   }
 }
 
@@ -617,12 +881,12 @@
   }
 
   .title {
-    font-size: 1.5rem;
+    font-size: 2.25rem;
     margin-bottom: 0.5rem;
   }
 
   .subtitle {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     margin-bottom: 1.25rem;
   }
 
@@ -632,7 +896,7 @@
 
   .downloadButton {
     padding: 0.625rem 0.875rem;
-    font-size: 0.7rem;
+    font-size: 1.05rem;
   }
 
   .buttonIcon {
@@ -658,11 +922,28 @@
     padding: 0.875rem;
   }
 
+  .sidebarCard:first-child {
+    flex: 0 0 25%;
+  }
+
+  .sidebarCard:last-child {
+    flex: 0 0 75%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   .cardText {
-    font-size: 0.7rem;
+    font-size: 1.05rem;
   }
 
   .cardIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .sidebarCard:first-child:hover .videoIcon {
     width: 36px;
     height: 36px;
   }
@@ -673,7 +954,7 @@
   }
 
   .apkLink {
-    font-size: 0.75rem;
+    font-size: 1.13rem;
   }
 
   .apkIcon {
@@ -682,40 +963,253 @@
   }
 }
 
-/* Very small screens (375px and below) */
+/* Mobile Layout (375x667) */
 @media (max-width: 375px) {
   .heroSection {
     padding: 0.75rem 0.5rem;
+    height: 100vh;
+    overflow: hidden;
   }
 
   .content {
     gap: 0.875rem;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
   }
 
   .leftColumn {
     padding: 1rem;
+    flex-shrink: 0;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    will-change: opacity, transform;
+  }
+
+  .leftColumn.fadeOut {
+    opacity: 0;
+    transform: translateY(-20px);
   }
 
   .title {
-    font-size: 1.375rem;
+    font-size: 2.06rem;
   }
 
   .subtitle {
-    font-size: 0.75rem;
+    font-size: 1.13rem;
     margin-bottom: 1rem;
   }
 
   .downloadButton {
     padding: 0.625rem 0.75rem;
-    font-size: 0.65rem;
-  }
-
-  .videoWrapper {
-    max-width: 200px;
+    font-size: 0.98rem;
   }
 
   .centerColumn {
     padding: 0.875rem;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease-in-out;
+    will-change: transform;
+  }
+
+  .videoWrapper {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    will-change: transform;
+  }
+
+  .backgroundVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    transition: all 0.4s ease-in-out;
+    border: none;
+    outline: none;
+  }
+
+  .rightColumn {
+    flex-shrink: 0;
+  }
+
+  .sidebarCard {
+    padding: 0.875rem;
+  }
+
+  .sidebarCard:first-child {
+    flex: 0 0 25%;
+  }
+
+  .sidebarCard:last-child {
+    flex: 0 0 75%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cardText {
+    font-size: 1.05rem;
+  }
+
+  .qrCode {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Mobile video with button */
+.mobileVideoWithButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeInScale 0.5s ease-out forwards;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileVideoContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  min-height: 0;
+}
+
+.mobileFullscreenVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.4s ease-in-out;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+}
+
+.mobileVideoButtonContainer {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+}
+
+/* Mobile video button styles */
+.mobileVideoButtonContainer .sidebarCard {
+  width: 100%;
+  max-width: 280px;
+  min-height: 50px;
+  padding: 0.5rem 0.75rem;
+  flex-direction: row;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.mobileVideoButtonContainer .cardIcon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.mobileVideoButtonContainer .sidebarCard:first-child:hover .videoIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.mobileVideoButtonContainer .cardText {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  text-align: left;
+  flex: 1;
+  line-height: 1.2;
+}
+
+@keyframes fadeInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile reviews only */
+.mobileReviewsOnly {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out forwards;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 1rem 1rem;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.mobileReviewsHeader {
+  text-align: center;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+  padding-top: 0.5rem;
+}
+
+.mobileReviewsTitle {
+  font-size: 1.88rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.mobileReviewsSubtitle {
+  font-size: 1.2rem;
+  color: #111827;
+  font-weight: 400;
+}
+
+.mobileReviewsContent {
+  flex: 1;
+  overflow-y: auto;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in animation for initial state */
+.fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

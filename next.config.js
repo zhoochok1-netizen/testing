@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // App router is enabled by default in Next.js 13+
+  // SSR enabled - removed 'output: export' for server-side rendering
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = nextConfig;
